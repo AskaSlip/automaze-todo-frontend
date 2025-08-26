@@ -1,7 +1,7 @@
 "use client"
 
 import CreateTask from "@/components/Tasks/CreateTask/CreateTask";
-import {useEffect, useState} from "react";
+import {Suspense, useEffect, useState} from "react";
 import TasksList from "@/components/Tasks/TasksList";
 import {ITask} from "@/models/ITask";
 import {CategoryService, TaskService} from "@/services/api.service";
@@ -88,7 +88,7 @@ export default function Home() {
                     <button onClick={() => setIsFilterOpen(true)}
                             className="w-full flex gap-[1vw] items-center ">
                         <img src="/icons/menu.png"
-                             alt="menu" className="w-[3vw]"/> <h1 className="text-2xl">Organize how you want</h1>
+                             alt="menu" className="w-[3vw]"/> <h1 className="text-2xl">Order and filter</h1>
                     </button> :
                     <nav className="flex gap-[1vw]">
                         <button className="w-[3vw]" onClick={() => setIsFilterOpen(false)}><img src="/icons/cancel.png"
@@ -107,10 +107,12 @@ export default function Home() {
                             (<CreateTask setIsFormOpen={setIsOpenCreate} onCreated={handleTaskCreated}/>)
                     }
                 </div>
-                <TasksList tasks={tasks}
-                           activeTask={setActiveTask}
-                           onUpdated={handleTaskUpdated}
+                <Suspense fallback={<div><h2>We are working on your tasks...</h2></div>}>
+                    <TasksList tasks={tasks}
+                              activeTask={setActiveTask}
+                              onUpdated={handleTaskUpdated}
                 />
+                </Suspense>
             </div>
             <div className="w-[35%] h-full">
                 {

@@ -3,7 +3,7 @@ import axios from "axios";
 import {ITaskResponse} from "@/models/ITaskResponse";
 import {ICategory} from "@/models/ICategory";
 
-const apiUrl = 'http://localhost:5000';
+const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const TaskService = {
     createTask: async (data: ITask): Promise<ITask> => {

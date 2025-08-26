@@ -8,10 +8,11 @@ import {CreateTaskFormData, CreateTaskSchema} from "@/validator/validation";
 import {zodResolver} from '@hookform/resolvers/zod';
 import Priority from "@/components/Tasks/CreateTask/Priority";
 import {StatusEnum} from "@/enums/status.enum";
+import {ITask} from "@/models/ITask";
 
 interface IProps {
     setIsFormOpen: (value: boolean) => void
-    onCreated: (newTask: any) => void
+    onCreated: (newTask: ITask) => void
 }
 
 const CreateTask: FC<IProps> = ({setIsFormOpen, onCreated}) => {

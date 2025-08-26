@@ -58,7 +58,7 @@ const CalendarComponent: FC<IProps> = ({setDateValue}) => {
                 value={value}
                 placeholder="June 01, 2025"
                 className="bg-background focus:border-accent focus:border-2 h-[4vh]"
-                onChange={(e: any) => {
+                onChange={(e) => {
                     const date = new Date(e.target.value)
                     setValue(e.target.value)
                     if (isValidDate(date)) {
@@ -67,7 +67,7 @@ const CalendarComponent: FC<IProps> = ({setDateValue}) => {
                         setActiveDate(formatForBackend(date))
                     }
                 }}
-                onKeyDown={(e: any) => {
+                onKeyDown={(e) => {
                     if (e.key === "ArrowDown") {
                         e.preventDefault()
                         setOpen(true)

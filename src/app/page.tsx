@@ -12,6 +12,7 @@ import AsideMenu from "@/components/AsideMenu";
 import Task from "@/components/Tasks/Task";
 import FilterMenu from "@/components/FilterMenu";
 import {DateEnum} from "@/enums/date.enum";
+import {ITaskParams} from "@/models/ITaskParams";
 
 export default function Home() {
 
@@ -29,7 +30,7 @@ export default function Home() {
     useEffect(() => {
         const fetchTasks = async () => {
             try {
-                const params: any = {};
+                const params: ITaskParams = {};
 
                 if (sortOption) params.sortByPriority = sortOption;
                 if (statusFilter) params.status = statusFilter;
